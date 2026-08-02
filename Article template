@@ -1,0 +1,34 @@
+<article>
+                    <h3>(Name)</h3>
+
+                    <p>
+                        <time datetime="YYYY-MM-DD">
+                            Month Day, Year
+                        </time>
+                    </p>
+
+                    <p>
+                        Describe what you cooked or practiced.
+                    </p>
+
+                    <p>
+                        <strong>What went well:</strong> 
+                        Describe the successful part of the attempt.
+                    </p>
+
+                    <p>
+                       <strong>What was difficult:</strong> 
+                       Describe a problem or challenge.
+                    </p>
+
+                    <p>
+                       <strong>Lesson learned:</strong> 
+                       Explain what the experience taught you.
+                    </p>
+
+                    <p>
+                        <em>
+                            Describe your goal for the next attempt.
+                        </em>
+                    </p>
+                </article>
