@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1.0">
+
+        <title>(website title)</title>
+    </head>
+
+
+    <body>
+        <header>
+            <h1>(webpage title)</h1>
+
+            <p>
+                Intro
+            </p>
+        </header>
+
+        <nav>
+            <a href="(webpage link).html" aria-current="page">(Webpage title)</a>
+            <a href="(webpage link).html" >(Webpage title)</a>
+            <a href="(webpage link).html" >(Webpage title)</a>
+            <a href="(webpage link).html" >(Webpage title)</a>
+        </nav>
+
+        <!-- Main section of webpage -->
+        <main>
+            <section>
+                <h2>Welcome</h2>
+
+                <p></p>
+                <p></p>
+            </section>
+
+            <section>
+                <h2>Featured Recipe</h2>
+                <h3>Homemade Pancakes</h3>
+                <img src="images/Pancakes.jpg"
+                 alt="A stack of homemade pancakes on a plate"
+                 width="500"   
+                >
+
+                <p> </p>
+                <p> </p>
+
+                <h4>Recipe Summary</h4>
+
+                <ul>
+                    <li><strong>Preparation time:</strong>10 minutes</li>
+                    <li><strong>Cooking time:</strong> 15 minutes</li>
+                    <li><strong>Difficulty</strong> Easy</li>
+                    <li><strong>Servings</strong> 4</li>
+                </ul>
+
+                <h4>Ingredients</h4>
+
+                <ul>
+                    <li>1 cup all-purpose flour</li>
+                    <li>2 tablespoons sugar</li>
+                    <li>2 teaspoons baking powder</li>
+                    <li>1 cup milk</li>
+                    <li>1 large egg</li>
+                    <li>2 tablespoons melted butter</li>
+                    <li>1 teaspoon vanilla extract</li>
+                </ul>
+
+                <h4>Instructions</h4>
+                <ol>
+                    <li>
+                        Gather and measure all of the ingredients.
+                    </li>
+
+                    <li>
+                        Combine the flour, sugar, and baking powder
+                        in a large mixing bowl.
+                    </li>
+
+                    <li>
+                        Add the milk, egg, and melted butter.
+                        Stir until the ingredients are combined.
+                    </li>
+
+                    <li>
+                        Heat a lightly greased pan over medium heat.
+                    </li>
+
+                    <li>
+                        Pour a small amount of batter into the pan.
+                    </li>
+
+                    <li>
+                        Cook until bubbles form on the surface,
+                        then flip the pancake.
+                    </li>
+
+                    <li>
+                        Cook the second side until it is golden brown.
+                    </li>
+                </ol>
+
+                <a href="recipes.html">View My Recipes</a>
+            </section>
+
+            
+
+            <section>
+                <h2>My Cooking Journey</h2>
+
+                <p></p>
+
+                <p></p>
+                
+                 <p>
+                    <a href="journal.html">My Complete Cooking Journal</a>
+                </p>
+
+                <article>
+                    <h3>My First Homemade Pancakes</h3>
+
+                    <p>
+                        <time datetime="2026-08-02">August 2, 2026</time>
+                    </p>
+
+                    <p>
+                        Recipe: Homemade Pancakes<br>
+                        Difficulty: Beginner<br>
+                        Result: Successful first attempt.
+                    </p>
+
+                    <p>
+                        Today I practiced making homemade pancakes from scratch.
+                        I focused on mixing the batter carefully and cooking each pancake evenly.
+                    </p>
+
+                    <p>
+                        <strong>What went well:</strong>
+                        The pancakes were soft, and I was able to cook most of them
+                        without burning the outside.
+                    </p>
+
+                    <p>
+                        <strong>What I want to improve:</strong>
+                        Some pancakes were different sizes, and I need more practice
+                        controlling how much batter I pour into the pan.
+                    </p>
+
+                    <p>
+                        Overall, this was a good first attempt.
+                        <em>My next goal is to make every pancake the same size.</em>
+                    </p>
+                </article>
+
+                 <p>
+                    <a href="journal.html">My Complete Cooking Journal</a>
+                </p>
+
+                <article>
+                    <h3>Learning to Make Scrambled Eggs</h3>
+
+                    <p>
+                        <time datetime="2026-08-03">August 3, 2026</time>
+                    </p>
+
+                    <p>
+                        Today I practiced cooking scrambled eggs over low heat.
+                    </p>
+
+                    <p>
+                        <strong>What went well:</strong>
+                        The eggs stayed soft and did not stick to the pan.
+                    </p>
+
+                    <p>
+                        <strong>What I want to improve:</strong>
+                        I want to season the eggs more evenly.
+                    </p>
+
+                    <p>
+                        <em>Next time, I will prepare all of the ingredients before cooking.</em>
+                    </p>
+                </article>
+            </section>
+        </main>
+
+        <footer>
+            <p>
+                &copy; 2026 My Cooking Journey
+            </p>
+        </footer>
+        
+    </body>
+</html>
