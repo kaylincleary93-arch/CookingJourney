@@ -1,0 +1,33 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fffaf3;
+    color:#2f2f2f;
+    margin: 0;
+}
+
+header{
+    padding: 32px;
+    text-align: center;
+}
+
+main{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+h2{
+    margin-top: 32px;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 8px;
+    text-align: center;
+}
+
+nav{
+    text-align: center;
+}
