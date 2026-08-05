@@ -68,6 +68,10 @@ main a:hover{
     color: #2e1e14;
 }
 
+.featured-recipe{
+    border-left: 6px solid #c77b4a;
+    background-color: #fff7ef;
+}
 section{
     background-color: #ffffff;
     border: 1px solid #e2d7cc;
