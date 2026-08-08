@@ -129,9 +129,9 @@ article{
     padding: 20px;
 }
 
-article + article{
-    margin-top: 24px;
-}
+/* article + article{ */
+    /* margin-top: 24px; */
+/* } */
 
 img{
     max-width: 100%;
