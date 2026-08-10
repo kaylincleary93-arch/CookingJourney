@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, intial-scale=1.0"
+    >
+
+    <title>Add Recipe | My Cooking Journal</title>
+
+    <link
+        rel="stylesheet"
+        href="css/styles.css"
+    >
+
+</head>
+
+<body>
+
+    <header>
+        <h1>My Cooking Journal</h1>
+
+        <p>
+            Learning, cooking, documenting, and improving.
+        </p>
+
+    </header>
+
+    <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="recipes.html" >Recipes</a>
+        <a href="journal.html">Cooking Journal</a>
+        <a href="about.html">About</a>
+        <a href="add-recipe.html" aria-current="page">Add Recipe</a>
+    </nav>
+
+    <main>
+
+        <section>
+
+            <h2>Add a Recipe</h2>
+
+            <p class="intro-text">
+                Use this form to document a recipe you are
+                practicing, developing, or improving.
+            </p>
+
+            <form class="recipe-form">
+                <div class="form-field">
+
+                    <label for="recipe-name">
+                        Recipe Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="recipe-name"
+                        name="recipeName"
+                        placeholder="Example: Buttermilk Pancakes"
+                        required
+                    
+                        >
+                </div>
+
+                <div class="form-field">
+
+                    <label for="date-cooked">
+                        Date Cooked
+                    </label>
+
+                    <input
+                        type="date"
+                        id="date-cooked"
+                        name="dateCooked"
+                        placeholder="Example: 8/10/2026"
+                        required
+                    >
+                </div>
+
+                <div class="form-field">
+
+                    <label for="recipe-description">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="recipe-description"
+                        name="description"
+                        rows="4"
+                        placeholder="Describe the recipe and what you are trying to achieve"
+                    ></textarea>
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="prep-time">
+                        Preparation Time
+                    </label>
+
+                    <input
+                        type="number"
+                        id="prep-time"
+                        name="prepTime"
+                        min="0"
+                        placeholder="Minutes"
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="cook-time">
+                        Cook Time
+                    </label>
+
+                    <input
+                        type="number"
+                        id="cook-time"
+                        name="cookTIme"
+                        min="0"
+                        placeholder="Minutes"
+                    >
+                </div>
+
+                <div class="form-field">
+
+                    <label for="servings">
+                        Servings
+                    </label>
+
+                    <input
+                        type="number"
+                        id="servings"
+                        name="servings"
+                        min="1"
+                        placeholder="Example: 4"
+                    >
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="difficulty">
+                        Difficulty
+                    </label>
+
+                    <select
+                        id="difficulty"
+                        name="difficulty"
+                    >
+
+                        <option value="beginner">
+                            Beginner
+                        </option>
+
+                        <option value="intermediate">
+                            Intermediate
+                        </option>
+
+                        <option value="advanced">
+                            Advanced
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="ingredients">
+                        Ingredients
+                    </label>
+
+                    <textarea
+                        id="ingredients"
+                        name="ingredients"
+                        rows="8"
+                        placeholder="Enter one ingredient per line."
+                        required
+                    ></textarea>
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="instructions">
+                        Instructions
+                    </label>
+
+                    <textarea
+                        id="instructions"
+                        name="instructions"
+                        rows="10"
+                        placeholder="Enter each step on a new line"
+                        required
+                    ></textarea>
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="cooking-notes">
+                        Cooking notes
+                    </label>
+
+                    <textarea
+                        id="cooking-notes"
+                        name="notes"
+                        rows="5"
+                        placeholder="What worked? What would you change next time?"
+                    ></textarea>
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="category">
+                        Catagory
+                    </label>
+
+                    <select 
+                        id="category"
+                        name="category"
+                    >
+
+                        <option value="breakfast">
+                            Breakfast
+                        </option>
+
+                        <option value="lunch">
+                            Lunch
+                        </option>
+
+                        <option value="dinner">
+                            Dinner
+                        </option>
+
+                        <option value="dessert">
+                            Dessert
+                        </option>
+
+                        <option value="snack">
+                            Snack
+                        </option>
+                        
+                    </select>
+
+                </div>
+
+                <button type="submit">
+                    Save Recipe
+                </button>
+                
+            </form>
+
+        </section>
+    </main>
+
+     <footer>
+        <p>
+            &copy; 2026 My Cooking Journey
+        </p>
+    </footer>
+
+</body>
+
+</html>
