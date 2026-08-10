@@ -22,7 +22,7 @@
         </p>
     </header>
 
-    <nav>
+    <nav class="site-nav">
         <a href="index.html">Home</a>
         <a href="recipes.html" aria-current="page">Recipes</a>
         <a href="journal.html">Cooking Journal</a>
@@ -45,7 +45,10 @@
         </section>
 
         <section>
+            <section id="breakfast">
             <h2>Breakfast Recipes</h2>
+
+            </section>
 
             <p>
                 Beginner-friendly breakfast recipes I am practicing
@@ -57,11 +60,22 @@
             <article class="recipe-card">
                 <h3>Homemade Pancakes</h3>
 
-                <img 
-                    src="images/Pancakes.jpg"
-                    alt="A stack of homemade pancakes on a plate"
-                    
-                 >
+                <div class="recipe-image-wrapper">
+
+                    <img 
+                        src="images/Pancakes.jpg"
+                        alt="A stack of homemade pancakes on a plate"  
+                    >
+
+                    <span class="recipe-image-label">
+                        Featured
+                    </span>
+
+                    <span class="recipe-image-label-difficulty">
+                        Beginner
+                    </span>
+
+                </div>
 
                  <p>
                     Soft homemade pancakes made while practicing
@@ -190,7 +204,10 @@
         </section>
 
         <section>
+            <section id="dessert">
             <h2>Dessert Recipes</h2>
+
+            </section>
 
             <div class="recipe-grid">
 
@@ -320,6 +337,21 @@
 
         </section>
         
+        <nav class="recipe-page-nav" aria-label="Recipe sections">
+
+            <a href="#breakfast">
+                Breakfast
+            </a>
+
+            <a href="#dinner">
+                Dinner
+            </a>
+
+            <a href="#dessert">
+                Dessert
+            </a>
+
+        </nav>
     </main>
 
     <footer>
