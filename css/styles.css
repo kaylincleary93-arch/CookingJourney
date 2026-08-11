@@ -133,10 +133,6 @@ article{
     padding: 20px;
 }
 
-/* article + article{ */
-    /* margin-top: 24px; */
-/* } */
-
 img{
     max-width: 100%;
     height: auto;
@@ -157,7 +153,7 @@ h1{
 
 h2{
     font-size: 1.75rem;
-    line-height: 1.25rem;
+    line-height: 2rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
     padding-bottom: .5rem;
@@ -169,7 +165,7 @@ h3{
     font-size: 1.375rem;
     line-height: 1.3;
     margin-top: 1.5rem;
-    margin-bottom: 0.75;
+    margin-bottom: 0.75rem;
 }
 
 h4{
@@ -299,6 +295,8 @@ footer p{
 
 .recipe-card img {
     width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
 .recipe-card-action {

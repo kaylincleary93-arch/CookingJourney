@@ -50,7 +50,10 @@
                 practicing, developing, or improving.
             </p>
 
-            <form class="recipe-form">
+            <form 
+                class="recipe-form"
+                method="get"
+            >
                 <div class="form-field">
 
                     <label for="recipe-name">
@@ -109,6 +112,7 @@
                         name="prepTime"
                         min="0"
                         placeholder="Minutes"
+                    >
 
                 </div>
 
@@ -216,6 +220,41 @@
                     ></textarea>
 
                 </div>
+
+                <fieldset class="form-group">
+
+                    <legend>
+                        Dietary Information
+                    </legend>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="dietary"
+                            value="vegetarian"
+                        >
+                        Vegetarian
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="dietary"
+                            value="vegan"
+                        >
+                        Vegan
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="dietary"
+                            value="gluten-free"
+                        >
+                        Gluten-free
+                    </label>
+                    
+                </fieldset>
 
                 <div class="form-field">
 
