@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta 
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Journal Entry | My Cooking Journal</title>
+
+    <link 
+        rel="stylesheet"
+        href="css/styles.css"
+    >
+
+</head>
+
+<body>
+    <header>
+        <h1>Journal Entry</h1>
+
+        <p>Today I cooked...</p>
+    </header>
+
+    <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="recipes.html" >Recipes</a>
+        <a href="journal.html">Cooking Journal</a>
+        <a href="about.html">About</a>
+        <a href="add-recipe.html">Add Recipe</a>
+        <a href="add-journal-entry.html" aria-current="page">Add Entry</a>
+    </nav>
+
+    <main>
+        <h2>Add a Journal Entry</h2>
+
+        <p>
+            Use this form to add journal entries.
+        </p>
+
+        <form 
+            class="journal-form"
+        >
+
+            <fieldset class="journal-form-header">
+
+                <legend>
+                    Entry Information
+                </legend>
+
+                <div class="form-field">
+
+                    <label for="entry-title">
+                        Journal Entry Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="entry-title"
+                        name="entryTitle"
+                        placeholder="Garlic Butter Chicken — Attempt #3"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="cooking-date">
+                        Cooking Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="cooking-date"
+                        name="cookingDate"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="recipe-name">
+                        Recipe Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="recipe-name"
+                        name="recipeName"
+                        placeholder="Example: Garlic Butter Chicken"
+                        required
+                        
+                    >
+                </div>
+
+                <div class="form-field">
+
+                        <label for="short-summary">
+                            Summary
+                        </label>
+
+                        <textarea
+                            id="short-summary"
+                            name="shortSummary"
+                            rows="4"
+                            placeholder="Describe your experience"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+            </fieldset>
+
+            <fieldset class="journal-session-summary">
+
+                <legend>
+                    Cooking Session
+                </legend>
+
+                <div class="journal-session-grid-wrapper">
+
+                    <div class="form-field">
+
+                        <label for="recipe-rating">
+                            Rating
+                        </label>
+
+                        <select
+                            id="recipe-rating"
+                            name="recipeRating"
+                            required
+                        >
+
+                            <option value="">
+                                Select Rating
+                            </option>
+
+                            <option value="1">
+                                1 / 5
+                            </option>
+
+                            <option value="2">
+                                2 / 5
+                            </option>
+
+                            <option value="3">
+                                3 / 5
+                            </option>
+
+                            <option value="4">
+                                4 / 5
+                            </option>
+
+                            <option value="5">
+                                5 / 5
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-field">
+
+                        <label for="difficulty">
+                            Difficulty
+                        </label>
+
+                        <select
+                            id="difficulty"
+                            name="attemptDifficulty"
+                        >
+
+                            <option value="" selected="" disabled="">
+                                Select Difficulty
+                            </option>
+                            
+                            <option value="beginner">
+                                Beginner
+                            </option>
+
+                            <option value="intermediate">
+                                Intermediate
+                            </option>
+
+                            <option value="advanced">
+                                Advanced
+                            </option>
+                        </select>
+                        
+                    </div>
+
+                    <div class="form-field">
+                        <label for="prep-time">
+                            Prep Time
+                        </label>
+
+                        <input
+                            type="number"
+                            id="prep-time"
+                            name="prepTime"
+                            min="0"
+                            placeholder="Minutes"
+                        >
+                            
+                    </div>
+
+                    <div class="form-field">
+                        <label for="cook-time">
+                            Cook Time
+                        </label>
+
+                        <input
+                            type="number"
+                            id="cook-time"
+                            name="cookTime"
+                            min="0"
+                            placeholder="Minutes"
+                        >
+                            
+                    </div>
+
+                    <div class="form-field">
+                        
+                        <label for="servings">
+                            Servings
+                        </label>
+
+                        <input
+                            type="number"
+                            id="servings"
+                            name="servings"
+                            min="1"
+                            placeholder="Example: 4"
+                        >
+                            
+                    </div>
+
+                    <div class="form-field">
+
+                        <label for="would-make-again">
+                            Would Make Again
+                        </label>
+
+                        <select
+                            id="would-make-again"
+                            name="wouldMakeAgain"
+                        >
+
+                            <option value="" selected="">
+                                Choose an option
+                            </option>
+
+                            <option value="yes">
+                                Yes
+                            </option>
+
+                            <option value="no">
+                                No
+                            </option>
+
+                            <option value="undecided">
+                                Undecided
+                            </option>
+                            
+                        </select>
+                    </div>
+
+                </div>
+
+            </fieldset>
+
+            <fieldset class="journal-reflection">
+
+                <legend>
+                    Refleciton
+                </legend>
+
+                <div class="form-field">
+                    <label for="went-well">
+                        What Went Well
+                    </label>
+
+                    <textarea
+                        id="went-well"
+                        name="wentWell"
+                        rows="5"
+                    ></textarea>
+
+                </div>
+
+                <div class="form-field">
+                    <label for="was-difficult">
+                        What Was Difficult 
+                    </label>
+
+                    <textarea
+                        id="was-difficult"
+                        name="wasDifficult"
+                        rows="5"
+                    ></textarea>
+                </div>
+
+                <div class="form-field">
+                    <label for="lesson-learned">
+                        Lesson Learned
+                    </label>
+
+                    <textarea
+                        id="lesson-learned"
+                        name="lessonLearned"
+                        rows="5"
+                    ></textarea>
+                </div>
+
+                <div class="form-field">
+
+                    <label for="next-goal">
+                        Next Goal
+                    </label>
+
+                    <textarea
+                        id="next-goal"
+                        name="nextGoal"
+                        rows="5"
+                    ></textarea>
+
+                </div>
+
+                <div class="form-field">
+                    <label for="changes-this-time">
+                        Changes This Time
+                    </label>
+
+                    <textarea
+                        id="changes-this-time"
+                        name="changesThisTime"
+                        rows="5"
+                        placeholder="Enter one change per line."
+                    ></textarea>
+                    
+                </div>
+            </fieldset>
+
+            <button type="submit">
+                Save Journal Entry
+            </button>
+
+        </form>
+    </main>
+   
+    <footer>
+        <p>
+            &copy; 2026 My Cooking Journey
+        </p>
+    </footer>
+</body>
+</html>

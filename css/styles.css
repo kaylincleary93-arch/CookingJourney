@@ -434,6 +434,12 @@ footer p{
     outline-offset: 3px;
 }
 
+.journal-session-grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
 @media (max-width) {
     h1 {
         font-size: 2rem;
@@ -464,5 +470,20 @@ footer p{
         display: block;
         margin: 0;
         padding: 10px 12px;
+    }
+}
+
+@media (max-width: 540px) {
+
+    .journal-session-grid-wrapper{
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 400px) {
+    .journal-session-grid-wrapper {
+        grid-template-columns: 1fr;
     }
 }
