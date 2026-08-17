@@ -440,6 +440,12 @@ footer p{
     gap: 1rem;
 }
 
+.journal-card{
+    border: 1px solid;
+    padding: 1rem;
+    margin-block: 1rem;
+}
+
 @media (max-width) {
     h1 {
         font-size: 2rem;
