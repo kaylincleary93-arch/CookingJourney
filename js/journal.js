@@ -48,6 +48,11 @@ const changesThisTimeInput =
 
 const journalEntriesContainer = 
     document.querySelector(".journal-entries");
+
+const journalFormMessage =
+    document.querySelector(
+        "#journal-form-message"
+    );
     
 // APPlICATION STATE
 let journalEntries = [];
@@ -88,9 +93,6 @@ function renderJournalEntries(){
                 titleElement.textContent = 
                     currentEntry.title;
 
-                journalCard.append(
-                    titleElement);
-
                 const dateElement = 
                     document.createElement(
                         "p"
@@ -102,11 +104,6 @@ function renderJournalEntries(){
                 dateElement.textContent =
                     `Cooking Date: ${currentEntry.cookingDate}`; 
 
-                journalCard.append(
-                    dateElement
-                );
-
-
                 const ratingElement =
                     document.createElement(
                         "p"
@@ -115,21 +112,13 @@ function renderJournalEntries(){
                 ratingElement.textContent = 
                     `Rating: ${currentEntry.session.rating} / 5`;
                 
-                journalCard.append(
-                    ratingElement
-                );
-
                 const summaryElement =
                     document.createElement(
                         "p"
                     );
 
                 summaryElement.textContent =
-                    currentEntry.summary;
-
-                journalCard.append(
-                    summaryElement
-                );
+                    currentEntry.summary;        
 
                 const recipeElement =
                     document.createElement(
@@ -139,10 +128,6 @@ function renderJournalEntries(){
                 recipeElement.textContent =
                     `Recipe: ${currentEntry.recipeName}`;
 
-                journalCard.append(
-                    recipeElement
-                );
-
                 const difficultyElement =
                     document.createElement(
                         "p"
@@ -151,9 +136,45 @@ function renderJournalEntries(){
                 difficultyElement.textContent =
                     `Difficulty: ${currentEntry.session.difficulty}`;
 
-                journalCard.append(
-                    difficultyElement
-                );
+                const prepTimeElement =
+                    document.createElement(
+                        "p"
+                    );
+
+                prepTimeElement.textContent =
+                    `Prep Time: ${currentEntry.session.prepTime}`;
+
+                const cookTimeElement =
+                    document.createElement(
+                        "p"
+                    );
+
+                cookTimeElement.textContent =
+                    currentEntry.session.cookTime;
+
+                const servingsElement =
+                    document.createElement(
+                        "p"
+                    );
+
+                servingsElement.textContent =
+                    currentEntry.session.servings;
+
+                const wouldMakeAgainElement =
+                    document.createElement(
+                        "p"
+                    );
+
+                wouldMakeAgainElement.textContent =
+                    currentEntry.session.wouldMakeAgain;
+
+                const wentWellElement =
+                    document.createElement(
+                        "p" 
+                    );
+
+                wentWellElement.textContent =
+                    currentEntry.reflection.wentWell;    
 
                 const deleteButton = 
                     document.createElement("button");
@@ -163,6 +184,49 @@ function renderJournalEntries(){
 
                 deleteButton.classList.add(
                     "journal-delete-button");
+
+                journalCard.append(
+                    titleElement);
+
+                journalCard.append(
+                    dateElement
+                );
+
+                journalCard.append(
+                    ratingElement
+                );
+
+                journalCard.append(
+                    summaryElement
+                );
+                
+                journalCard.append(
+                    recipeElement
+                );    
+
+                journalCard.append(
+                    difficultyElement
+                );
+
+                journalCard.append(
+                    prepTimeElement
+                );
+
+                journalCard.append(
+                    cookTimeElement
+                );
+
+                journalCard.append(
+                    servingsElement
+                );
+
+                journalCard.append(
+                    wouldMakeAgainElement
+                );
+
+                journalCard.append(
+                    wentWellElement
+                );
 
                 journalCard.append(
                     deleteButton
@@ -300,6 +364,9 @@ if( journalForm !== null)
             localStorage.setItem(
                 "journalEntries",
                 JSON.stringify(journalEntries));
+
+            journalFormMessage.textContent =
+                "Entry added successfully"
 
             renderJournalEntries();
 
