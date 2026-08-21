@@ -49,89 +49,22 @@ const changesThisTimeInput =
 const journalEntriesContainer = 
     document.querySelector(".journal-entries");
     
-const journalEntries = [];
+// APPlICATION STATE
+let journalEntries = [];
 
-console.log(journalEntries);
+// LOAD SAVED STATE
+const savedJournalEntries = 
+    localStorage.getItem("journalEntries");
 
-journalForm.addEventListener(
-    "submit",
-    function (event) {
-        event.preventDefault();
+if(savedJournalEntries !== null){
+    journalEntries = JSON.parse(savedJournalEntries);
+}
 
-        const entryTitle =
-            entryTitleInput.value;
+// FUNCTIONS
+function renderJournalEntries(){
 
-        const cookingDate =
-                cookingDateInput.value;
+            if(journalEntriesContainer === null){return;}
 
-        const recipeName =
-                recipeNameInput.value;
-
-        const shortSummary =
-                shortSummaryInput.value;
-
-        const recipeRating =
-               Number(recipeRatingInput.value);
-
-        const difficulty =
-                difficultyInput.value;
-        
-        const prepTime =
-                Number(prepTimeInput.value);
-
-        const cookTime =
-                Number(cookTimeInput.value);
-
-        const servings =
-                Number(servingsInput.value);
-
-        const wouldMakeAgain =
-                wouldMakeAgainInput.value;
-
-        const wentWell =
-                wentWellInput.value;
-
-        const wasDifficult =
-                wasDifficultInput.value;
-
-        const lessonLearned =
-                lessonLearnedInput.value;
-
-        const nextGoal =
-                nextGoalInput.value;
-
-        const changesThisTime =
-                changesThisTimeInput.value;
-
-        const journalEntry = {
-            title: entryTitle,
-            cookingDate: cookingDate,
-            recipeName: recipeName,
-            summary: shortSummary,
-
-            session: {
-                rating: recipeRating,
-                difficulty: difficulty,
-                prepTime: prepTime,
-                cookTime: cookTime,
-                servings:servings,
-                wouldMakeAgain: wouldMakeAgain
-            },
-
-            reflection:{
-                wentWell:wentWell,
-                wasDifficult: wasDifficult,
-                lessonLearned: lessonLearned,
-                nextGoal: nextGoal,
-                changesThisTime: changesThisTime
-            }    
-        };
-
-        journalEntries.push(journalEntry);
-
-        renderJournalEntries();
-
-        function renderJournalEntries(){
             journalEntriesContainer.innerHTML = "";
 
             for(
@@ -145,6 +78,9 @@ journalForm.addEventListener(
                 
                 const journalCard = 
                     document.createElement("article");
+
+                journalCard.dataset.entryId =
+                    currentEntry.id;
 
                 const titleElement = 
                     document.createElement("h3");
@@ -219,11 +155,155 @@ journalForm.addEventListener(
                     difficultyElement
                 );
 
+                const deleteButton = 
+                    document.createElement("button");
+                
+                deleteButton.textContent = 
+                    "Delete";
+
+                deleteButton.classList.add(
+                    "journal-delete-button");
+
+                journalCard.append(
+                    deleteButton
+                );
+
+                deleteButton.addEventListener(
+                    "click",
+                    function(){
+
+                        const shouldDelete =
+                            confirm(
+                                "Delete this journal entry?"
+                            );
+
+                        if(!shouldDelete){
+                            return;
+                        }
+                        
+                        journalEntries =
+                            journalEntries.filter(
+                                function(journalEntry){
+                                    return (
+                                        journalEntry.id
+                                        !== 
+                                        currentEntry.id
+                                    );
+                                }
+                            );
+                            
+                        localStorage.setItem(
+                            "journalEntries",
+                            JSON.stringify(
+                                journalEntries
+                            )
+                        );
+
+                        renderJournalEntries();
+                    }
+                );
+
                 journalEntriesContainer.append(
                     journalCard);
                 
                 journalCard.classList.add("journal-card");
             }
         }
-    }
-);
+
+// INITIAL READER
+renderJournalEntries();
+
+
+console.log(journalEntries);
+
+if( journalForm !== null)
+    { 
+    journalForm.addEventListener(
+        "submit",
+        function (event) {
+            event.preventDefault();
+
+            const entryTitle =
+                entryTitleInput.value;
+
+            const cookingDate =
+                    cookingDateInput.value;
+
+            const recipeName =
+                    recipeNameInput.value;
+
+            const shortSummary =
+                    shortSummaryInput.value;
+
+            const recipeRating =
+                Number(recipeRatingInput.value);
+
+            const difficulty =
+                    difficultyInput.value;
+            
+            const prepTime =
+                    Number(prepTimeInput.value);
+
+            const cookTime =
+                    Number(cookTimeInput.value);
+
+            const servings =
+                    Number(servingsInput.value);
+
+            const wouldMakeAgain =
+                    wouldMakeAgainInput.value;
+
+            const wentWell =
+                    wentWellInput.value;
+
+            const wasDifficult =
+                    wasDifficultInput.value;
+
+            const lessonLearned =
+                    lessonLearnedInput.value;
+
+            const nextGoal =
+                    nextGoalInput.value;
+
+            const changesThisTime =
+                    changesThisTimeInput.value;
+
+            const journalEntry = {
+
+                id: crypto.randomUUID(),
+
+                title: entryTitle,
+                cookingDate: cookingDate,
+                recipeName: recipeName,
+                summary: shortSummary,
+
+                session: {
+                    rating: recipeRating,
+                    difficulty: difficulty,
+                    prepTime: prepTime,
+                    cookTime: cookTime,
+                    servings:servings,
+                    wouldMakeAgain: wouldMakeAgain
+                },
+
+                reflection:{
+                    wentWell:wentWell,
+                    wasDifficult: wasDifficult,
+                    lessonLearned: lessonLearned,
+                    nextGoal: nextGoal,
+                    changesThisTime: changesThisTime
+                }    
+            };
+
+            journalEntries.push(journalEntry);
+
+            localStorage.setItem(
+                "journalEntries",
+                JSON.stringify(journalEntries));
+
+            renderJournalEntries();
+
+            
+        }
+    );
+}
