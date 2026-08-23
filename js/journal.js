@@ -54,8 +54,21 @@ const journalFormMessage =
         "#journal-form-message"
     );
     
+const urlParameters =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const editingEntryId =
+    urlParameters.get(
+        "entryId"
+    );
+  
 // APPlICATION STATE
 let journalEntries = [];
+
+let editingEntry = 
+    null;
 
 // LOAD SAVED STATE
 const savedJournalEntries = 
@@ -64,6 +77,68 @@ const savedJournalEntries =
 if(savedJournalEntries !== null){
     journalEntries = JSON.parse(savedJournalEntries);
 }
+
+if(editingEntryId !== null){
+    editingEntry =
+        journalEntries.find(
+            function(journalEntry){
+
+                return(journalEntry.id
+                    ===
+                    editingEntryId
+                );
+            }
+        );
+
+        entryTitleInput.value =
+            editingEntry.title;
+        
+        cookingDateInput.value =
+            editingEntry.cookingDate;
+
+        recipeNameInput.value =
+            editingEntry.recipeName;
+
+        shortSummaryInput.value =
+            editingEntry.summary;
+
+        recipeRatingInput.value =
+            editingEntry.session.rating;
+
+        difficultyInput.value =
+            editingEntry.session.difficulty;
+
+        prepTimeInput.value =
+            editingEntry.session.prepTime;
+
+        cookTimeInput.value =
+            editingEntry.session.cookTime;
+
+        servingsInput.value =
+            editingEntry.session.servings;
+
+        wouldMakeAgainInput.value =
+            editingEntry.session.wouldMakeAgain;
+        
+        wentWellInput.value = 
+            editingEntry.reflection.wentWell;
+
+        wasDifficultInput.value =
+            editingEntry.reflection.wasDifficult;
+
+        lessonLearnedInput.value =
+            editingEntry.reflection.lessonLearned;
+
+        nextGoalInput.value =
+            editingEntry.reflection.nextGoal;
+
+        changesThisTimeInput.value =
+            editingEntry.reflection.changesThisTime;
+    }    
+
+console.log(editingEntry);
+
+
 
 // FUNCTIONS
 function renderJournalEntries(){
@@ -97,84 +172,209 @@ function renderJournalEntries(){
                     document.createElement(
                         "p"
                     );
-                
-                dateElement.textContent =
-                    currentEntry.cookingDate;    
 
-                dateElement.textContent =
-                    `Cooking Date: ${currentEntry.cookingDate}`; 
+                const dateTitle =
+                    document.createElement("strong");
 
-                const ratingElement =
-                    document.createElement(
-                        "p"
-                    );
-                
-                ratingElement.textContent = 
-                    `Rating: ${currentEntry.session.rating} / 5`;
-                
-                const summaryElement =
-                    document.createElement(
-                        "p"
-                    );
+                dateTitle.textContent=
+                    "Cooking Date: "   
 
-                summaryElement.textContent =
-                    currentEntry.summary;        
+                dateElement.append(
+                    dateTitle,
+                    currentEntry.cookingDate
+                ); 
 
                 const recipeElement =
                     document.createElement(
                         "p"
                     );
+
+                const recipeTitle =
+                    document.createElement("strong");
+
+                recipeTitle.textContent =
+                    "Recipe: ";
                    
-                recipeElement.textContent =
-                    `Recipe: ${currentEntry.recipeName}`;
+                recipeElement.append(
+                    recipeTitle,
+                    currentEntry.recipeName
+                );
+
+                const summaryElement =
+                    document.createElement(
+                        "p"
+                    );
+                
+                const summaryTitle =
+                    document.createElement("strong");
+
+                summaryTitle.textContent=
+                    "Summary: ";
+
+                summaryElement.append(
+                    summaryTitle,
+                    currentEntry.summary
+                );  
+
+                const ratingElement =
+                    document.createElement(
+                        "p"
+                    );
+
+                const ratingTitle =
+                    document.createElement("strong");
+
+                ratingTitle.textContent =
+                    "Rating: ";
+                
+                ratingElement.append(
+                    ratingTitle, 
+                    currentEntry.session.rating, "/ 5"
+                );
 
                 const difficultyElement =
                     document.createElement(
                         "p"
                     );
 
-                difficultyElement.textContent =
-                    `Difficulty: ${currentEntry.session.difficulty}`;
+                const difficultyTitle =
+                    document.createElement("strong");
+
+                difficultyTitle.textContent =
+                    "Difficulty: ";
+
+                difficultyElement.append (
+                    difficultyTitle,
+                    currentEntry.session.difficulty
+                );
 
                 const prepTimeElement =
                     document.createElement(
                         "p"
                     );
 
-                prepTimeElement.textContent =
-                    `Prep Time: ${currentEntry.session.prepTime}`;
+                const prepTimeTitle =
+                    document.createElement("strong");
+
+                prepTimeTitle.textContent =
+                    "Prep Time: ";
+
+                prepTimeElement.append(
+                    prepTimeTitle,
+                    currentEntry.session.prepTime
+                );
 
                 const cookTimeElement =
                     document.createElement(
                         "p"
                     );
 
-                cookTimeElement.textContent =
-                    currentEntry.session.cookTime;
+                const cookTimeTitle =
+                    document.createElement("strong");
+
+                cookTimeTitle.textContent =
+                    "Cook Time: ";
+
+                cookTimeElement.append(
+                    cookTimeTitle,
+                    currentEntry.session.cookTime
+                );   
 
                 const servingsElement =
                     document.createElement(
                         "p"
                     );
 
-                servingsElement.textContent =
-                    currentEntry.session.servings;
+                const servingsTitle =
+                document.createElement("strong");
+
+                servingsTitle.textContent =
+                    "Servings: ";
+
+                servingsElement.append(
+                    servingsTitle,
+                    currentEntry.session.servings
+                );
 
                 const wouldMakeAgainElement =
                     document.createElement(
                         "p"
                     );
 
-                wouldMakeAgainElement.textContent =
-                    currentEntry.session.wouldMakeAgain;
+                const wouldMakeAgainTitle =
+                    document.createElement("strong");
+
+                wouldMakeAgainTitle.textContent=
+                    "Would Make Again? "
+
+                wouldMakeAgainElement.append(
+                    wouldMakeAgainTitle,
+                    currentEntry.session.wouldMakeAgain
+                );
 
                 const wentWellElement =
                     document.createElement(
                         "p" 
                     );
 
-                wentWellElement.textContent =
-                    currentEntry.reflection.wentWell;    
+                const wentWellTitle =
+                    document.createElement("strong");
+
+                wentWellTitle.textContent =
+                    "Went Well: ";
+
+                wentWellElement.append(
+                    wentWellTitle,
+                    currentEntry.reflection.wentWell
+                );
+                
+                const lessonLearnedElement =
+                    document.createElement(
+                        "p"
+                    );
+
+                const lessonLearnedTitle =
+                    document.createElement("strong");
+
+                lessonLearnedTitle.textContent=
+                    "Lesson Learned: ";
+
+                lessonLearnedElement.append(
+                    lessonLearnedTitle,
+                    currentEntry.reflection.lessonLearned
+                );
+
+                const nextGoalElement =
+                    document.createElement(
+                        "p"
+                    );
+
+                const nextGoalTitle =
+                    document.createElement("strong");
+
+                nextGoalTitle.textContent=
+                    "Next Goal: ";
+
+                nextGoalElement.append(
+                    nextGoalTitle,
+                    currentEntry.reflection.nextGoal
+                );
+
+                const changesThisTimeElement =
+                    document.createElement(
+                        "p"
+                    );
+
+                const changesThisTimeTitle =
+                    document.createElement("strong");
+
+                changesThisTimeTitle.textContent=
+                    "Changes This Time: ";
+
+                changesThisTimeElement.append(
+                    changesThisTimeTitle,
+                    currentEntry.reflection.changesThisTime
+                );
 
                 const deleteButton = 
                     document.createElement("button");
@@ -185,52 +385,44 @@ function renderJournalEntries(){
                 deleteButton.classList.add(
                     "journal-delete-button");
 
-                journalCard.append(
-                    titleElement);
+                const editButton =
+                    document.createElement("button");
 
-                journalCard.append(
-                    dateElement
+                editButton.textContent =
+                    "Edit";
+
+                editButton.classList.add(
+                    "journal-edit-button"
                 );
 
                 journalCard.append(
-                    ratingElement
-                );
+                    titleElement, 
+                    dateElement,
+                    recipeElement,
+                    summaryElement,  
+                    ratingElement,                                 
+                    difficultyElement,
+                    prepTimeElement,
+                    cookTimeElement,
+                    servingsElement,
+                    wouldMakeAgainElement,
+                    wentWellElement,
+                    lessonLearnedElement,
+                    nextGoalElement,
+                    changesThisTimeElement,
+                    deleteButton,
+                    editButton
+                ); 
 
-                journalCard.append(
-                    summaryElement
+                editButton.addEventListener(
+                    "click",
+                    function (){
+                       window.location.href=
+                       "add-journal-entry.html?entryId="
+                       + currentEntry.id;
+                    }
                 );
                 
-                journalCard.append(
-                    recipeElement
-                );    
-
-                journalCard.append(
-                    difficultyElement
-                );
-
-                journalCard.append(
-                    prepTimeElement
-                );
-
-                journalCard.append(
-                    cookTimeElement
-                );
-
-                journalCard.append(
-                    servingsElement
-                );
-
-                journalCard.append(
-                    wouldMakeAgainElement
-                );
-
-                journalCard.append(
-                    wentWellElement
-                );
-
-                journalCard.append(
-                    deleteButton
-                );
 
                 deleteButton.addEventListener(
                     "click",
@@ -332,41 +524,59 @@ if( journalForm !== null)
             const changesThisTime =
                     changesThisTimeInput.value;
 
-            const journalEntry = {
+            if(editingEntry ===null){
 
-                id: crypto.randomUUID(),
+                const journalEntry = {
 
-                title: entryTitle,
-                cookingDate: cookingDate,
-                recipeName: recipeName,
-                summary: shortSummary,
+                    id: crypto.randomUUID(),
 
-                session: {
-                    rating: recipeRating,
-                    difficulty: difficulty,
-                    prepTime: prepTime,
-                    cookTime: cookTime,
-                    servings:servings,
-                    wouldMakeAgain: wouldMakeAgain
-                },
+                    title: entryTitle,
+                    cookingDate: cookingDate,
+                    recipeName: recipeName,
+                    summary: shortSummary,
 
-                reflection:{
-                    wentWell:wentWell,
-                    wasDifficult: wasDifficult,
-                    lessonLearned: lessonLearned,
-                    nextGoal: nextGoal,
-                    changesThisTime: changesThisTime
-                }    
+                    session: {
+                        rating: recipeRating,
+                        difficulty: difficulty,
+                        prepTime: prepTime,
+                        cookTime: cookTime,
+                        servings:servings,
+                        wouldMakeAgain: wouldMakeAgain
+                    },
+
+                    reflection:{
+                        wentWell:wentWell,
+                        wasDifficult: wasDifficult,
+                        lessonLearned: lessonLearned,
+                        nextGoal: nextGoal,
+                        changesThisTime: changesThisTime
+                    }    
             };
 
             journalEntries.push(journalEntry);
+
+        }
+
+        else{
+            editingEntry.title =
+            entryTitle;
+
+            console.log(editingEntry);
+        }
 
             localStorage.setItem(
                 "journalEntries",
                 JSON.stringify(journalEntries));
 
-            journalFormMessage.textContent =
+            if(editingEntry === null){
+                journalFormMessage.textContent =
                 "Entry added successfully"
+            }
+
+            else{
+                journalFormMessage.textContent =
+                "Edits Saved";
+            }
 
             renderJournalEntries();
 
