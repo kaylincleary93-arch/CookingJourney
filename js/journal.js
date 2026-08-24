@@ -49,6 +49,9 @@ const changesThisTimeInput =
 const journalEntriesContainer = 
     document.querySelector(".journal-entries");
 
+const journalSearchInput =
+    document.querySelector("#journalsearch");
+
 const journalFormMessage =
     document.querySelector(
         "#journal-form-message"
@@ -134,14 +137,26 @@ if(editingEntryId !== null){
 
         changesThisTimeInput.value =
             editingEntry.reflection.changesThisTime;
-    }    
+    }
+    
+if(journalSearchInput !== null){
+
+    journalSearchInput.addEventListener(
+        "input",
+        function(){
+
+            applyJournalSearch();
+        }
+    );
+
+}
 
 console.log(editingEntry);
 
 
 
 // FUNCTIONS
-function renderJournalEntries(){
+function renderJournalEntries(entriesToRender){
 
             if(journalEntriesContainer === null){return;}
 
@@ -149,12 +164,12 @@ function renderJournalEntries(){
 
             for(
                 let index = 0;
-                index < journalEntries.length;
+                index < entriesToRender.length;
                 index = index + 1
             ){
 
                 const currentEntry =
-                    journalEntries[index];
+                    entriesToRender[index];
                 
                 const journalCard = 
                     document.createElement("article");
@@ -177,12 +192,20 @@ function renderJournalEntries(){
                     document.createElement("strong");
 
                 dateTitle.textContent=
-                    "Cooking Date: "   
+                    "Cooking Date: ";
+                    
+                const dateTimeElement =
+                    document.createElement("time");
+                
+                dateTimeElement.dateTime =
+                    currentEntry.cookingDate;
+
+                dateTimeElement.textContent =
+                    currentEntry.cookingDate;
 
                 dateElement.append(
-                    dateTitle,
-                    currentEntry.cookingDate
-                ); 
+                    dateTimeElement
+                );
 
                 const recipeElement =
                     document.createElement(
@@ -327,6 +350,22 @@ function renderJournalEntries(){
                     wentWellTitle,
                     currentEntry.reflection.wentWell
                 );
+
+                const wasDifficultElement =
+                    document.createElement(
+                        "p"
+                    );
+
+                const wasDifficultTitle =
+                    document.createElement("strong");
+
+                wasDifficultTitle.textContent =
+                    "Was Difficult: ";
+
+                wasDifficultElement.append(
+                    wasDifficultTitle,
+                    currentEntry.reflection.wasDifficult
+                );
                 
                 const lessonLearnedElement =
                     document.createElement(
@@ -355,9 +394,15 @@ function renderJournalEntries(){
                 nextGoalTitle.textContent=
                     "Next Goal: ";
 
+                const nextGoalEmphasis =
+                    document.createElement("em");
+
+                nextGoalEmphasis.textContent =
+                    currentEntry.reflection.nextGoal;
+
                 nextGoalElement.append(
                     nextGoalTitle,
-                    currentEntry.reflection.nextGoal
+                    nextGoalEmphasis
                 );
 
                 const changesThisTimeElement =
@@ -398,21 +443,50 @@ function renderJournalEntries(){
                 journalCard.append(
                     titleElement, 
                     dateElement,
-                    recipeElement,
-                    summaryElement,  
-                    ratingElement,                                 
-                    difficultyElement,
-                    prepTimeElement,
-                    cookTimeElement,
-                    servingsElement,
-                    wouldMakeAgainElement,
-                    wentWellElement,
-                    lessonLearnedElement,
-                    nextGoalElement,
-                    changesThisTimeElement,
+                    recipeElement
+                ); 
+
+                if(currentEntry.summary !== ""){
+                    journalCard.append(summaryElement);}
+
+                if(currentEntry.session.rating > 0){
+                    journalCard.append(ratingElement);}
+
+                if(currentEntry.session.difficulty !== ""){
+                    journalCard.append(difficultyElement);}
+
+                if(currentEntry.session.prepTime > 0){
+                    journalCard.append(prepTimeElement);}
+
+                if(currentEntry.session.cookTime > 0){
+                    journalCard.append(cookTimeElement);}
+
+                if(currentEntry.session.servings > 0){
+                    journalCard.append(servingsElement);}
+
+                if(currentEntry.session.wouldMakeAgain !==""){
+                    journalCard.append(wouldMakeAgainElement);}
+
+                //Reflection
+                if(currentEntry.reflection.wentWell !== ""){
+                    journalCard.append(wentWellElement);}
+
+                if(currentEntry.reflection.wasDifficult !== ""){
+                    journalCard.append(wasDifficultElement);}
+
+                if(currentEntry.reflection.lessonLearned !== ""){
+                    journalCard.append(lessonLearnedElement);}
+
+                if(currentEntry.reflection.nextGoal !== ""){
+                    journalCard.append(nextGoalElement);}
+
+                if(currentEntry.reflection.changesThisTime !== ""){
+                    journalCard.append(changesThisTimeElement);}
+
+                journalCard.append(
                     deleteButton,
                     editButton
-                ); 
+                );
 
                 editButton.addEventListener(
                     "click",
@@ -455,7 +529,7 @@ function renderJournalEntries(){
                             )
                         );
 
-                        renderJournalEntries();
+                        applyJournalSearch();
                     }
                 );
 
@@ -466,8 +540,35 @@ function renderJournalEntries(){
             }
         }
 
+function applyJournalSearch(){
+
+    const searchText =
+                journalSearchInput.value.toLowerCase();
+
+            const matchingEntries =
+                journalEntries.filter(
+                    function(journalEntry){
+
+                        return (
+                            journalEntry.title.toLowerCase().includes(
+                                searchText
+                            )
+                            ||
+                            journalEntry.recipeName.toLowerCase().includes(
+                                searchText
+                            )
+                        );
+                    }
+                );
+
+            renderJournalEntries(matchingEntries);
+
+            console.log(matchingEntries);
+
+}
+
 // INITIAL READER
-renderJournalEntries();
+renderJournalEntries(journalEntries);
 
 
 console.log(journalEntries);
@@ -560,6 +661,48 @@ if( journalForm !== null)
         else{
             editingEntry.title =
             entryTitle;
+
+            editingEntry.cookingDate =
+            cookingDate;
+
+            editingEntry.recipeName=
+            recipeName;
+
+            editingEntry.summary =
+            shortSummary;
+
+            editingEntry.session.rating =
+            recipeRating;
+
+            editingEntry.session.difficulty =
+            difficulty;
+
+            editingEntry.session.prepTime =
+            prepTime;
+
+            editingEntry.session.cookTime =
+            cookTime;
+
+            editingEntry.session.servings =
+            servings;
+
+            editingEntry.session.wouldMakeAgain =
+            wouldMakeAgain;
+
+            editingEntry.reflection.wentWell =
+            wentWell;
+
+            editingEntry.reflection.wasDifficult =
+            wasDifficult;
+
+            editingEntry.reflection.lessonLearned =
+            lessonLearned;
+
+            editingEntry.reflection.nextGoal =
+            nextGoal;
+
+            editingEntry.reflection.changesThisTime =
+            changesThisTime;
 
             console.log(editingEntry);
         }
