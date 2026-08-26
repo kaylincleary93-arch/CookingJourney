@@ -52,6 +52,12 @@ const journalEntriesContainer =
 const journalSearchInput =
     document.querySelector("#journalsearch");
 
+const difficultyFilter =
+    document.querySelector("#difficulty-filter");
+
+const journalSort =
+    document.querySelector("#sort-journal");
+
 const journalFormMessage =
     document.querySelector(
         "#journal-form-message"
@@ -148,6 +154,20 @@ if(journalSearchInput !== null){
             applyJournalSearch();
         }
     );
+
+    difficultyFilter.addEventListener(
+        "change",
+        function(){
+            applyJournalSearch();
+        }
+    );
+
+    journalSort.addEventListener(
+        "change",
+        function(){
+            applyJournalSearch();
+        }
+    )
 
 }
 
@@ -543,27 +563,116 @@ function renderJournalEntries(entriesToRender){
 function applyJournalSearch(){
 
     const searchText =
-                journalSearchInput.value.toLowerCase();
+        journalSearchInput.value.toLowerCase();
 
-            const matchingEntries =
-                journalEntries.filter(
-                    function(journalEntry){
+    const selectedDifficulty =
+        difficultyFilter.value;
 
-                        return (
-                            journalEntry.title.toLowerCase().includes(
-                                searchText
-                            )
-                            ||
-                            journalEntry.recipeName.toLowerCase().includes(
-                                searchText
-                            )
-                        );
-                    }
+    const selectedSort =
+        journalSort.value;
+
+    const matchingEntries =
+        journalEntries.filter(
+            function(journalEntry){
+
+                const matchesSearch =
+                journalEntry.title.toLowerCase().includes(
+                    searchText
+                )
+                ||
+                journalEntry.recipeName.toLowerCase().includes(
+                    searchText
                 );
 
-            renderJournalEntries(matchingEntries);
+                const matchesDifficulty =
+                    selectedDifficulty === "all"
+                    ||
+                    journalEntry.session.difficulty.toLowerCase()
+                    === selectedDifficulty;
 
-            console.log(matchingEntries);
+                return (
+                    matchesSearch
+                    &&
+                    matchesDifficulty
+                );
+            }
+        );
+
+        if(
+            selectedSort === "newest"
+        ){
+            matchingEntries.sort(
+                function(
+                    entryA,
+                    entryB
+                ){
+                    return new Date(
+                        entryB.cookingDate
+                    )
+                    -
+                    new Date(
+                        entryA.cookingDate
+                    );
+                }
+            );
+        }
+
+        if(
+            selectedSort === "oldest"
+        ){
+            matchingEntries.sort(
+                function(
+                    entryA,
+                    entryB
+                ){
+                    return new Date(
+                        entryA.cookingDate
+                    )
+                    -
+                    new Date(
+                        entryB.cookingDate
+                    );
+                }
+            );
+        }
+
+        if(
+            selectedSort === "highest-rating"
+        ){
+            matchingEntries.sort(
+                function(
+                    entryA,
+                    entryB
+                ){
+                    return (
+                        entryB.session.rating
+                    -
+                        entryA.session.rating
+                    );
+                }
+            );
+        }
+
+        if(
+            selectedSort === "lowest-rating"
+        ){
+            matchingEntries.sort(
+                function(
+                    entryA,
+                    entryB
+                ){
+                    return (
+                        entryA.session.rating
+                    -
+                        entryB.session.rating
+                    );
+                }
+            );
+        }
+
+    renderJournalEntries(matchingEntries);
+
+    console.log(matchingEntries);
 
 }
 
